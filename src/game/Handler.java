@@ -37,15 +37,15 @@ public class Handler {
 		this.object.remove(object);
 	}
 
-	public void clearEnemies() {
+	
+	public boolean noPuck() {
 		for (int i = 0; i < object.size(); i++) {
 			tempObject = object.get(i);
-			if (tempObject.getID() != ID.Player) {
-				object.remove(i);
-				i--;
+			if (tempObject.getID() == ID.Puck) {
+				return true;
 			}
 		}
-
+		return false;
 	}
 
 }

@@ -18,6 +18,7 @@ public class Game extends Canvas implements Runnable {
 	Handler handler;
 	HUD hud;
 	Random r;
+	Spawner spawn;
 	
 	/**
 	 * Constructor
@@ -28,9 +29,10 @@ public class Game extends Canvas implements Runnable {
 		new Window(WIDTH, HEIGHT, "Pong", this);
 		this.addKeyListener(new KeyInput(handler));
 		r = new Random();
+		spawn = new Spawner(handler);
 		
 		
-		handler.addObject(new Puck(WIDTH/2-25, HEIGHT/2-48, ID.Puck, handler));
+		
 		handler.addObject(new Player(10, 300, ID.Player, handler));
 		handler.addObject(new Player(1090, 300, ID.Player2, handler));
 		
@@ -88,7 +90,7 @@ public class Game extends Canvas implements Runnable {
 
 			if (System.currentTimeMillis() - timer > 1000) {
 				timer += 1000;
-				System.out.println("FPS: " + frames);
+				//System.out.println("FPS: " + frames);
 				frames = 0;
 			}
 		}
@@ -101,6 +103,7 @@ public class Game extends Canvas implements Runnable {
 	public void tick() {
 		handler.tick();
 		hud.tick();
+		spawn.tick();
 	}
 	
 	public void render() {

@@ -40,6 +40,14 @@ public class Player extends GameObject {
 				if (getBounds().intersects(tempObject.getBounds())) {
 					// if this.player intersects with enemy object
 					float newVel = tempObject.getVelX() * -1;
+					
+					if (newVel < 0) {
+						newVel -= .66f;
+					}
+					else {
+						newVel += .33f;
+					}
+
 					tempObject.setVelX(newVel);
 					
 				}

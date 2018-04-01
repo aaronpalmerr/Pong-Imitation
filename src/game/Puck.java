@@ -15,37 +15,36 @@ public class Puck extends GameObject {
 		this.handler = handler;
 		r = new Random();
 
+//		velX = -4;
+//		velY = 4;
 		
-		velX = -4;
-		velY = 4;
+		// randomly pick speeds between 6 and -6.
+		velX = r.nextInt(6 - (-6) + 1) + -6;
+		velY = r.nextInt(6 - (-6) + 1) + -6;
 		
-//		velX = r.nextInt(7-(-7)+(-7));
-//		velY = r.nextInt(7-(-7)+(-7));
-//		if (velX == velY) {
-//			velX = 3;
-//			velY = 2;
-//		}
-//		if (velX == 0) {
-//			velX = 1;
-//		}
-//		if (velY == 0) {
-//			velY = 1;
-//		}
-//		if (velX == velY) {
-//			velX = 3;
-//			velY = 2;
-//		}
-		
-	}
-
-	public Rectangle getBounds() {
-		return new Rectangle((int)x, (int)y, 25, 25);
+		// in the event the speeds are equal,
+		if (velX == velY) {
+			velX = -5;
+			velY = -4;
+		}
+		if (velX == 0) {
+			velX = -4;
+		}
+		if (velY == 0) {
+			velY = 6;
+		}
+		if (velX == velY) {
+			velX = 3;
+			velY = -2;
+		}
+//		
 	}
 
 	@Override
 	public void tick() {
-		x += velX;
 		y += velY;
+		x += velX;
+		
 
 		// Keeps enemy from exiting x and y borders
 		
@@ -73,10 +72,20 @@ public class Puck extends GameObject {
 		
 	}
 
+	/**
+	 * Renders graphics
+	 */
 	@Override
 	public void render(Graphics g) {
 		g.setColor(Color.red.darker());
 		g.fillRect((int)x, (int)y, 25, 25);
+	}
+	
+	/**
+	 * Marks the boundaries of the puck for collision testing.
+	 */
+	public Rectangle getBounds() {
+		return new Rectangle((int)x, (int)y, 25, 25);
 	}
 
 }
