@@ -12,14 +12,23 @@ import java.awt.Graphics;
 
 public class HUD {
 	
-	
+	/*
+	 * Static instance variables.
+	 */
 	public static int playerOneScore;
 	public static int playerTwoScore;
 
+	/**
+	 * Empty tick() method.  
+	 */
 	public void tick() {
 		
 	}
 
+	/**
+	 * Renders the HUD at the top of the GUI.  
+	 * @param g
+	 */
 	public void render(Graphics g) {
 		
 		// create new font
@@ -31,7 +40,6 @@ public class HUD {
 		g.drawString(""+ playerTwoScore, 750, 75);
 
 	}
-
 
 	/**
 	 * Increments playerOne's score.

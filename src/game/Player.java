@@ -45,7 +45,7 @@ public class Player extends GameObject {
 						newVel -= .66f;
 					}
 					else {
-						newVel += .33f;
+						newVel += .34f;
 					}
 
 					tempObject.setVelX(newVel);

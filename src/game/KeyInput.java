@@ -3,12 +3,24 @@ package game;
 import java.awt.event.KeyAdapter; 
 import java.awt.event.KeyEvent;
 
+/**
+ * Handles key input from the keyboard.  
+ * @author apalm
+ *
+ */
+
 public class KeyInput extends KeyAdapter {
 	
+	/*
+	 * Class instance variables. 
+	 */
 	private Handler handler;
 	private boolean[] keyDown = new boolean[4];
 	private boolean[] keyDown2 = new boolean[4];
 
+	/*
+	 * Constructor
+	 */
 	public KeyInput(Handler handler) {
 		this.handler = handler;
 
@@ -23,6 +35,9 @@ public class KeyInput extends KeyAdapter {
 		keyDown2[3] = false;
 	}
 
+	/**
+	 * Handles when a key is pressed.  
+	 */
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
 		//System.out.println(key);
@@ -78,11 +93,15 @@ public class KeyInput extends KeyAdapter {
 			
 			
 		}
-		if (key == KeyEvent.VK_ESCAPE) { // game exits on ESC button
+		// game exits on ESC button
+		if (key == KeyEvent.VK_ESCAPE) { 
 			System.exit(1);
 		}
 	}
 
+	/**
+	 * Handles when a keyboard key is released.
+	 */
 	public void keyReleased(KeyEvent e) {
 		int key = e.getKeyCode();
 

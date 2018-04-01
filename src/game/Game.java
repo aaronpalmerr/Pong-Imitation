@@ -4,7 +4,16 @@ import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.util.Random;
 
-
+/**
+ * This game is a recreation of the classic Atari game Pong.  This class
+ * handles numerous game objects that work together to render
+ * the graphics and mathematical calculations.  
+ * 
+ * It also contains the Main for the program. 
+ * 
+ * @author apalm
+ *
+ */
 
 public class Game extends Canvas implements Runnable {
 
@@ -30,15 +39,10 @@ public class Game extends Canvas implements Runnable {
 		this.addKeyListener(new KeyInput(handler));
 		r = new Random();
 		spawn = new Spawner(handler);
-		
-		
-		
-		handler.addObject(new Player(10, 300, ID.Player, handler));
-		handler.addObject(new Player(1090, 300, ID.Player2, handler));
-		
-		
-		
-		
+	
+		handler.addObject(new Player(10, 300, ID.Player, handler)); // add player1
+		handler.addObject(new Player(1090, 300, ID.Player2, handler)); // add player2
+
 	}
 
 	/**
@@ -65,6 +69,9 @@ public class Game extends Canvas implements Runnable {
 		thread.start();
 	}
 	
+	/**
+	 * Runs the game using magical code.   
+	 */
 	@Override
 	public void run() {
 		requestFocus(); // don't need to click on screen to control input
@@ -98,14 +105,18 @@ public class Game extends Canvas implements Runnable {
 		
 	}
 	
-	
-	
+	/**
+	 * Runs the Handler, HUD, Spawn objects.  
+	 */
 	public void tick() {
 		handler.tick();
 		hud.tick();
 		spawn.tick();
 	}
 	
+	/**
+	 * Renders all the graphics on the main window.  
+	 */
 	public void render() {
 		BufferStrategy bs = this.getBufferStrategy();
 		if (bs == null) {
@@ -115,10 +126,10 @@ public class Game extends Canvas implements Runnable {
 
 		Graphics g = bs.getDrawGraphics();
 		
-		g.setColor(Color.black);
+		g.setColor(Color.black); // set game background color to black
 		g.fillRect(0, 0, WIDTH, HEIGHT);
 		
-		g.setColor(Color.white.darker());
+		g.setColor(Color.white.darker()); // set dividing line to grey
 		g.fillRect(WIDTH/2-25, 0, 25, HEIGHT);
 
 		handler.render(g); // render handler
@@ -130,8 +141,8 @@ public class Game extends Canvas implements Runnable {
 	}
 	
 	/**
-	 * Sets the limits that a player can travel to in the GUI,
-	 * thus ensure they remain in the borders.
+	 * Sets the limits that objects can travel in the GUI,
+	 * thus ensuring they remain within the borders when neccessary.
 	 * @param var
 	 * @param min
 	 * @param max
@@ -147,7 +158,10 @@ public class Game extends Canvas implements Runnable {
 		return var;
 	}
 	
-	
+	/**
+	 * Main 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		new Game();
 	}

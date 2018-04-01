@@ -1,3 +1,3 @@
-This repository is for my first Java game I created without a tutorial.  
+This program replicates the classic Atari video game Pong, created by Allan Alcorn. 
 
-This game replicates the classic Pong video game created by Allan Alcorn.  
+It's the first Java game I created without a step-by-step tutorial.  

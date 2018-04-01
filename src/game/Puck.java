@@ -9,15 +9,13 @@ public class Puck extends GameObject {
 	
 	private Handler handler;
 	Random r;
+	private int timer = 60;
 
 	public Puck(float x, float y, ID id, Handler handler) {
 		super(x, y, id);
 		this.handler = handler;
 		r = new Random();
 
-//		velX = -4;
-//		velY = 4;
-		
 		// randomly pick speeds between 6 and -6.
 		velX = r.nextInt(6 - (-6) + 1) + -6;
 		velY = r.nextInt(6 - (-6) + 1) + -6;
@@ -42,10 +40,16 @@ public class Puck extends GameObject {
 
 	@Override
 	public void tick() {
+//		if (timer <= 0) {
+//			velX = 0;
+//			velY = 0;
+//		}
+//		else {
+//			timer--;
+//		}
 		y += velY;
 		x += velX;
 		
-
 		// Keeps enemy from exiting x and y borders
 		
 		//top and bottom borders

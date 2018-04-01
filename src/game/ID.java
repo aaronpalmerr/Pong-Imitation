@@ -8,8 +8,8 @@ package game;
 
 public enum ID {
 
-	Player(),
-	Player2(),
-	Puck();
+	Player(), // person on the left side of the GUI.
+	Player2(), // person on the right side of the GUI.
+	Puck(); // the puck that bounces along the walls.  
 	
 }

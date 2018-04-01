@@ -16,8 +16,12 @@ public class Spawner {
 	}
 	
 	public void tick() {
+	
 		
 		if (handler.noPuck() == false) {
+			
+			
+			
 			handler.addObject(new Puck(Game.WIDTH/2-25, Game.HEIGHT/2-48, ID.Puck, handler));
 		}
 		
