@@ -18,6 +18,13 @@ public class HUD {
 	public static int playerOneScore;
 	public static int playerTwoScore;
 
+	/*
+	 * Empty constructor.  
+	 */
+	public HUD() {
+		
+	}
+	
 	/**
 	 * Empty tick() method.  
 	 */
@@ -45,7 +52,7 @@ public class HUD {
 	 * Increments playerOne's score.
 	 */
 	public void PlayerOneScored() {
-		this.playerOneScore++;
+		HUD.playerOneScore++;
 	}
 
 	/**
@@ -53,14 +60,14 @@ public class HUD {
 	 * @return
 	 */
 	public int getPlayerOneScore() {
-		return this.playerOneScore;
+		return HUD.playerOneScore;
 	}
 	
 	/**
 	 * Increments playerTwo's score.
 	 */
 	public void PlayerTwoScored() {
-		this.playerTwoScore++;
+		HUD.playerTwoScore++;
 	}
 
 	/**
@@ -68,7 +75,7 @@ public class HUD {
 	 * @return
 	 */
 	public int getPlayerTwoScore() {
-		return this.playerTwoScore;
+		return HUD.playerTwoScore;
 	}
 	
 	/**

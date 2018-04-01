@@ -5,12 +5,26 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.Random;
 
+/**
+ * Puck object moves across the GUI for the players to stop from passing
+ * their object.  If the puck exits the GUI on a player's side, the opposing 
+ * player scores a point.  
+ * @author apalm
+ *
+ */
+
 public class Puck extends GameObject {
 	
+	/*
+	 * Class instance variables
+	 */
 	private Handler handler;
 	Random r;
 	private int timer = 60;
 
+	/*
+	 * Constructor
+	 */
 	public Puck(float x, float y, ID id, Handler handler) {
 		super(x, y, id);
 		this.handler = handler;
@@ -38,6 +52,9 @@ public class Puck extends GameObject {
 //		
 	}
 
+	/**
+	 * Moves puck within the GUI.  
+	 */
 	@Override
 	public void tick() {
 //		if (timer <= 0) {
@@ -50,30 +67,35 @@ public class Puck extends GameObject {
 		y += velY;
 		x += velX;
 		
-		// Keeps enemy from exiting x and y borders
+		/*
+		 * Stops puck from exiting top and bottom of GUI
+		 */
 		
-		//top and bottom borders
+		// Controls top and bottom borders
 		if (y <= 0 || y >= Game.HEIGHT-48) {
 			velY *= -1;
 		}
 		
 		// left and right borders
 		if (x <= 0  || x >= Game.WIDTH-32) { 
+			
+			/*
+			 * If puck leaves GUI, it's removed from the GameObject ArrayList.  
+			 */
 			handler.removeObject(this);
 		}
 		
-		
+		/*
+		 * Determines which player gets the point based
+		 * on x coordinate of the puck when it left the GUI.
+		 */
 		if (x <= 0) {
 			HUD.playerTwoScore++;
-			handler.removeObject(this);
 		}
-			
 		else if (x >= Game.WIDTH-32) { 
 			HUD.playerOneScore++;
-			handler.removeObject(this);
 		}
-		
-		
+
 	}
 
 	/**

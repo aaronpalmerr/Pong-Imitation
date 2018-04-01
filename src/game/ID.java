@@ -1,7 +1,7 @@
 package game;
 
 /**
- * Holds the key identifiers for game objects
+ * Holds the key identifiers for game objects.
  * @author apalm
  *
  */

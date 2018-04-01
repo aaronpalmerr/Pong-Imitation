@@ -5,22 +5,39 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.Random;
 
+/**
+ * Player objects represent the human players in the game.  
+ * @author apalm
+ *
+ */
 
 public class Player extends GameObject {
 
+	/*
+	 * Class instance variables
+	 */
 	private Random r = new Random();
 	private Handler handler;
 
+	/*
+	 * Constructor
+	 */
 	public Player(float x, float y, ID id, Handler handler) {
 		super(x, y, id);
 		this.handler = handler;
 
 	}
 
+	/**
+	 * Returns the boundaries of the player for collision testing.  
+	 */
 	public Rectangle getBounds() {
 		return new Rectangle((int)x, (int)y, 25, 125);
 	}
 
+	/**
+	 * Moves player vertically over GUI.
+	 */
 	public void tick() {
 		x += velX;
 		y += velY;
@@ -31,16 +48,25 @@ public class Player extends GameObject {
 		collision();
 	}
 
+	/**
+	 * Detects collisions and adjusts the puck accordingly.  
+	 */
 	private void collision() {
+	
+		// Sort through GameObjects ArrayList
 		for (int i = 0; i < handler.object.size(); i++) {
 			GameObject tempObject = handler.object.get(i);
 
+			// if object is the puck
 			if (tempObject.getID() == ID.Puck) {
-				// check if tempObject is an enemy
+				
+				// if puck intersects with the player
 				if (getBounds().intersects(tempObject.getBounds())) {
-					// if this.player intersects with enemy object
+					
+					// change direction of the puck
 					float newVel = tempObject.getVelX() * -1;
 					
+					// change the velocity of the puck
 					if (newVel < 0) {
 						newVel -= .66f;
 					}
@@ -48,6 +74,7 @@ public class Player extends GameObject {
 						newVel += .34f;
 					}
 
+					// set the new velocity to the puck
 					tempObject.setVelX(newVel);
 					
 				}
@@ -58,7 +85,9 @@ public class Player extends GameObject {
 			
 		}
 
-
+	/**
+	 * Renders the player object in the GUI.  
+	 */
 	public void render(Graphics g) {
 
 		g.setColor(Color.cyan.darker());
