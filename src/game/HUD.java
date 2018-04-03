@@ -15,8 +15,7 @@ public class HUD {
 	/*
 	 * Static instance variables.
 	 */
-	public static int playerOneScore;
-	public static int playerTwoScore;
+	public static int playerOneScore, playerTwoScore;
 
 	/*
 	 * Empty constructor.  

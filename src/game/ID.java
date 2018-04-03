@@ -10,6 +10,7 @@ public enum ID {
 
 	Player(), // person on the left side of the GUI.
 	Player2(), // person on the right side of the GUI.
-	Puck(); // the puck that bounces along the walls.  
+	Puck(), // the puck that bounces along the walls. 
+	MenuPuck(); // the puck that bounces along the walls on menu screen.
 	
 }

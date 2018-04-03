@@ -75,5 +75,18 @@ public class Handler {
 		}
 		return false;
 	}
+	
+	public void clearMenu() {
+		for (int i = 0; i < object.size(); i++) {
+			tempObject = object.get(i);
+			if (tempObject.getID() == ID.MenuPuck) {
+				object.remove(i);
+			}
+		}
+	}
+	
+	public void reset() {
+		object.clear();
+	}
 
 }

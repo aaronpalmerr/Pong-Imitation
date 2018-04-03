@@ -1,8 +1,9 @@
 package game;
 
-import java.awt.*;  
+import java.awt.*; 
 import java.awt.image.BufferStrategy;
 import java.util.Random;
+
 
 /**
  * This game is a recreation of the classic Atari game Pong.  This class
@@ -28,6 +29,9 @@ public class Game extends Canvas implements Runnable {
 	HUD hud;
 	Random r;
 	Spawner spawn;
+	Menu menu;
+	
+	public static STATE gameState = STATE.Menu;
 	
 	/**
 	 * Constructor
@@ -38,10 +42,17 @@ public class Game extends Canvas implements Runnable {
 		new Window(WIDTH, HEIGHT, "Pong", this);
 		this.addKeyListener(new KeyInput(handler));
 		r = new Random();
+		menu = new Menu(this, handler, hud);
+		this.addMouseListener(menu);
 		spawn = new Spawner(handler);
 	
-		handler.addObject(new Player(10, 300, ID.Player, handler)); // add player1
-		handler.addObject(new Player(1090, 300, ID.Player2, handler)); // add player2
+		
+		if (gameState == STATE.Menu) {
+			handler.addObject(new MenuPuck(Game.WIDTH/2-25, Game.HEIGHT/2-48, ID.MenuPuck, handler));
+		}
+		
+	
+		
 
 	}
 
@@ -110,8 +121,27 @@ public class Game extends Canvas implements Runnable {
 	 */
 	public void tick() {
 		handler.tick();
-		hud.tick();
-		spawn.tick();
+		
+		if (gameState == STATE.Menu || gameState == STATE.End) {
+			menu.tick();
+			
+		}
+		
+		else if (gameState == STATE.Game) {
+			handler.clearMenu();
+			hud.tick();
+			spawn.tick();
+			
+			if (HUD.playerOneScore > 4 || HUD.playerTwoScore > 4) {
+				gameState = STATE.End;
+				handler.reset();
+			}
+				
+			
+		}
+		
+		
+		
 	}
 	
 	/**
@@ -134,7 +164,12 @@ public class Game extends Canvas implements Runnable {
 
 		handler.render(g); // render handler
 		
-		hud.render(g); // render HUD
+		if (gameState == STATE.Game) {
+			hud.render(g); // render HUD
+		}
+		else if (gameState == STATE.Menu || gameState == STATE.Help || gameState == STATE.End) {
+			menu.render(g);
+		}
 
 		g.dispose();
 		bs.show();
