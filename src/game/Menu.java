@@ -140,11 +140,13 @@ public class Menu extends MouseAdapter {
 			// help menu font
 			g.setFont(font);
 			g.setColor(Color.white);
-			g.drawString("Help", 235, 100);
+			g.drawString("Help", 105, 100);
 			
 			g.setFont(font2);
 			g.setColor(Color.white);
-			g.drawString("Use WASD keys to move player and dodge enemies ", 60, 210);
+			g.drawString("Player One uses the W and S keys to move up and down", 60, 160);
+			g.drawString("Player Two uses the UP and DOWN arrows to move up and down", 60, 210);
+			g.drawString("Score 5 points to win the game!", 60, 260);
 			
 			g.setFont(font3);
 			g.setColor(Color.white);
@@ -156,30 +158,30 @@ public class Menu extends MouseAdapter {
 			
 			// fonts
 			Font font = new Font("ariel", 1, 50);
-			Font font2 = new Font("ariel", 1, 20);
+			Font font2 = new Font("ariel", 1, 40);
 			Font font3 = new Font("ariel", 1, 30);
 			
 			// help menu font
 			g.setFont(font);
-			g.setColor(Color.white);
-			g.drawString("Game, Set, Match!", 170, 100);
+			g.setColor(Color.red.darker());
+			g.drawString("Game, Set, Match!", 35, 100);
 			
 			g.setFont(font2);
 			g.setColor(Color.white);
 			
+			// Display the winner
 			if (HUD.playerOneScore > 4) {
-				g.drawString("Player One Wins.", 170, 210);
+				g.drawString("Player One wins.", 90, 215);
 			}
-			
 			else if (HUD.playerTwoScore > 4) {
-				g.drawString("Player Two Wins.", 170, 210);
+				g.drawString("Player Two wins.", 90, 215);
 			}
 			
-			
+			// Game over button to return to the main menu
 			g.setFont(font3);
 			g.setColor(Color.white);
-			g.drawRect(200, 300, 200, 64);
-			g.drawString("Try again?", 230, 343);
+			g.drawRect(150, 300, 200, 64);
+			g.drawString("Menu", 210, 341);
 
 		}
 		

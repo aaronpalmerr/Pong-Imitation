@@ -76,17 +76,7 @@ public class MenuPuck extends GameObject {
 		// Keeps enemy from exiting x and y borders
 				if (y <= 0 || y >= Game.HEIGHT-48) velY *= -1;
 				if (x <= 0 || x >= Game.WIDTH-32) velX *= -1;
-		
-		/*
-		 * Determines which player gets the point based
-		 * on x coordinate of the puck when it left the GUI.
-		 */
-		if (x <= 0) {
-			HUD.playerTwoScore++;
-		}
-		else if (x >= Game.WIDTH-32) { 
-			HUD.playerOneScore++;
-		}
+	
 
 	}
 

@@ -1,5 +1,11 @@
 package game;
 
+/**
+ * States of the game.
+ * @author apalm
+ *
+ */
+
 public enum STATE {
 
 	Menu,
@@ -8,4 +14,5 @@ public enum STATE {
 	Results,
 	Pause,
 	End,
+	
 }
