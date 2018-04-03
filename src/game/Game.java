@@ -1,6 +1,6 @@
 package game;
 
-import java.awt.*; 
+import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.util.Random;
 
@@ -46,6 +46,8 @@ public class Game extends Canvas implements Runnable {
 		this.addMouseListener(menu);
 		spawn = new Spawner(handler);
 	
+		AudioPlayer.load();
+		AudioPlayer.getMusic("music").loop();
 		
 		if (gameState == STATE.Menu) {
 			handler.addObject(new MenuPuck(Game.WIDTH/2-25, Game.HEIGHT/2-48, ID.MenuPuck, handler));

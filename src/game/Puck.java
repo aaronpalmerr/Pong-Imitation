@@ -74,10 +74,12 @@ public class Puck extends GameObject {
 		// Controls top and bottom borders
 		if (y <= 0 || y >= Game.HEIGHT-48) {
 			velY *= -1;
+			AudioPlayer.getSound("wall").play();
 		}
 		
 		// left and right borders
 		if (x <= 0  || x >= Game.WIDTH-32) { 
+			AudioPlayer.getSound("goal").play();
 			
 			/*
 			 * If puck leaves GUI, it's removed from the GameObject ArrayList.  

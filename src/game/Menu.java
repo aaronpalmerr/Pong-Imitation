@@ -35,13 +35,13 @@ public class Menu extends MouseAdapter {
 				handler.addObject(new Player(10, 300, ID.Player, handler)); // add player1
 				handler.addObject(new Player(1090, 300, ID.Player2, handler)); // add player2
 			
-				//AudioPlayer.getSound("menu_sound").play();
+				AudioPlayer.getSound("click").play();
 			}
 			
 			// help button
 			if (mouseOver(mx, my, 200, 225, 200, 64)) {
 				Game.gameState = STATE.Help;
-				//AudioPlayer.getSound("menu_sound").play();
+				AudioPlayer.getSound("click").play();
 			}
 			
 			// quit button
@@ -54,8 +54,7 @@ public class Menu extends MouseAdapter {
 		if (Game.gameState == STATE.Help) {
 			if (mouseOver(mx, my, 200, 300, 200, 64)) {
 				Game.gameState = STATE.Menu;
-				//AudioPlayer.getSound("menu_sound").play();
-				
+				AudioPlayer.getSound("click").play();
 				return;
 			}
 		}
@@ -65,6 +64,7 @@ public class Menu extends MouseAdapter {
 			if (mouseOver(mx, my, 200, 300, 200, 64)) {
 				hud.resetGame();
 				Game.gameState = STATE.Menu;
+				handler.addObject(new MenuPuck(Game.WIDTH/2-25, Game.HEIGHT/2-48, ID.MenuPuck, handler));
 				return;
 			}
 		}
@@ -101,6 +101,7 @@ public class Menu extends MouseAdapter {
 	
 	public void render(Graphics g) {
 		if (Game.gameState == STATE.Menu) {
+			
 			// fonts
 			Font font = new Font("ariel", 1, 50);
 			Font font2 = new Font("ariel", 1, 30);
@@ -116,8 +117,6 @@ public class Menu extends MouseAdapter {
 			g.setFont(font2);
 			g.setColor(Color.white);
 			g.drawString("Play", 265, 190);
-			
-			
 			
 			// set help button and font
 			g.setColor(Color.white);
@@ -171,10 +170,10 @@ public class Menu extends MouseAdapter {
 			
 			// Display the winner
 			if (HUD.playerOneScore > 4) {
-				g.drawString("Player One wins.", 90, 215);
+				g.drawString("Player One wins", 90, 215);
 			}
 			else if (HUD.playerTwoScore > 4) {
-				g.drawString("Player Two wins.", 90, 215);
+				g.drawString("Player Two wins", 90, 215);
 			}
 			
 			// Game over button to return to the main menu

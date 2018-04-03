@@ -63,6 +63,8 @@ public class Player extends GameObject {
 				// if puck intersects with the player
 				if (getBounds().intersects(tempObject.getBounds())) {
 					
+					AudioPlayer.getSound("player").play();
+					
 					// change direction of the puck
 					float newVel = tempObject.getVelX() * -1;
 					
