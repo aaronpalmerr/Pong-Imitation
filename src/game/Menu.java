@@ -103,7 +103,7 @@ public class Menu extends MouseAdapter {
 		if (Game.gameState == STATE.Menu) {
 			
 			// fonts
-			Font font = new Font("ariel", 1, 50);
+			Font font = new Font("ariel", 1, 75);
 			Font font2 = new Font("ariel", 1, 30);
 			
 			// menu font

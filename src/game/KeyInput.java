@@ -110,6 +110,18 @@ public class KeyInput extends KeyAdapter {
 		if (key == KeyEvent.VK_ESCAPE) {
 			System.exit(1);
 		}
+		
+		/*
+		 * Quit mid-game
+		 */
+		if (Game.gameState == STATE.Game) {
+			if (key == KeyEvent.VK_Q) {
+				Game.gameState = STATE.End;
+				handler.reset();
+			}
+		}
+		
+		
 	}
 
 	/**

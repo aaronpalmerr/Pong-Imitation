@@ -16,7 +16,6 @@ public class Player extends GameObject {
 	/*
 	 * Class instance variables
 	 */
-	private Random r = new Random();
 	private Handler handler;
 
 	/*
@@ -68,7 +67,7 @@ public class Player extends GameObject {
 					// change direction of the puck
 					float newVel = tempObject.getVelX() * -1;
 					
-					// change the velocity of the puck
+					// increase the velocity of the puck
 					if (newVel < 0) {
 						newVel -= .66f;
 					}

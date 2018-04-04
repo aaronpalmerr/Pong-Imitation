@@ -195,11 +195,11 @@ public class Game extends Canvas implements Runnable {
 		return var;
 	}
 	
-	/**
-	 * Main 
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		new Game();
-	}
+//	/**
+//	 * Main 
+//	 * @param args
+//	 */
+//	public static void main(String[] args) {
+//		
+//	}
 }
